@@ -23,11 +23,12 @@ There is no course or curriculum here — just honest notes from someone learnin
 
 <!-- AUTO-GENERATED-START -->
 
-### 📋 Cheat Sheets
+### 📚 Learning Guides
 
 | # | Topic | File |
 |---|-------|------|
-| 1 | Python Cheatsheet | [`python-cheatsheet.md`](cheatsheets/python-cheatsheet.md) |
+| 1 | Api Guide | [`api-guide.md`](learning-guides/api-guide.md) |
+| 2 | Python Guide | [`python-guide.md`](learning-guides/python-guide.md) |
 
 ### 🎯 Interview Guides
 
@@ -35,12 +36,11 @@ There is no course or curriculum here — just honest notes from someone learnin
 |---|-------|------|
 | 1 | Python Interview Guide | [`python-interview-guide.md`](interview-guides/python-interview-guide.md) |
 
-### 📚 Learning Guides
+### 📋 Cheat Sheets
 
 | # | Topic | File |
 |---|-------|------|
-| 1 | Api Guide | [`api-guide.md`](learning-guides/api-guide.md) |
-| 2 | Python Guide | [`python-guide.md`](learning-guides/python-guide.md) |
+| 1 | Python Cheatsheet | [`python-cheatsheet.md`](cheatsheets/python-cheatsheet.md) |
 
 <!-- AUTO-GENERATED-END -->
 

@@ -14,6 +14,13 @@ FOLDER_TITLES = {
 
 SKIP_FOLDERS = {".git", ".github", "scripts", ".obsidian", ".claude", "__pycache__"}
 
+# Folders appear in this order; any new folder not listed is appended below.
+FOLDER_ORDER = [
+    "learning-guides",
+    "interview-guides",
+    "cheatsheets",
+]
+
 
 def topic_name(filename: str) -> str:
     stem = Path(filename).stem          # "python-interview-guide"
@@ -43,12 +50,15 @@ def build_table(folder_path: Path, folder_name: str) -> str:
 
 
 def generate_content() -> str:
-    folders = sorted(
-        d
+    all_folders = {
+        d.name: d
         for d in ROOT.iterdir()
         if d.is_dir() and d.name not in SKIP_FOLDERS and not d.name.startswith(".")
-    )
-    blocks = [build_table(d, d.name) for d in folders]
+    }
+    # Known folders first (in declared order), then any new folders alphabetically.
+    ordered = [all_folders[n] for n in FOLDER_ORDER if n in all_folders]
+    ordered += sorted(d for n, d in all_folders.items() if n not in FOLDER_ORDER)
+    blocks = [build_table(d, d.name) for d in ordered]
     return "\n".join(b for b in blocks if b)
 
 
