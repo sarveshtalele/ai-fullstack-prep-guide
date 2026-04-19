@@ -16,11 +16,8 @@ SKIP_FOLDERS = {".git", ".github", "scripts", ".obsidian", ".claude", "__pycache
 
 
 def topic_name(filename: str) -> str:
-    stem = Path(filename).stem  # e.g. "lg_python" or "ig_system-design"
-    parts = stem.split("_", 1)
-    if len(parts) == 2 and len(parts[0]) <= 3:
-        stem = parts[1]
-    return stem.replace("-", " ").title()
+    stem = Path(filename).stem          # "python-interview-guide"
+    return stem.replace("-", " ").title()  # "Python Interview Guide"
 
 
 def build_table(folder_path: Path, folder_name: str) -> str:

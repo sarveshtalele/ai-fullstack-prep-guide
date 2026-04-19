@@ -1,10 +1,25 @@
-# 🚀 AI Full Stack Learning Dump
+# AI Full Stack Prep Guide
 
-A personal knowledge base of **learning guides** and **interview preparation notes** across AI full-stack technologies. Every folder in this repo is auto-indexed in the table below — drop a new markdown file in and the GitHub Action takes care of the rest.
+> A personal knowledge base covering AI, full-stack engineering, and system design — built while learning in public. All notes, guides, and cheat sheets are openly available. Feel free to reference, fork, or share anything here.
 
 ---
 
-## 📂 Contents
+## About This Repo
+
+This is my personal learning dump. Every time I study a new concept, go through interview prep, or summarise a topic, I drop a file here. The goal is to build a structured, searchable reference I can return to — and that others might find useful too.
+
+Topics span the full AI engineering stack:
+
+- **AI & ML fundamentals** — models, training, inference, RAG, agents
+- **Backend & APIs** — Python, REST, async patterns, databases
+- **System design** — architecture patterns, scalability, trade-offs
+- **Interview prep** — concept walkthroughs, common questions, answers
+
+There is no course or curriculum here — just honest notes from someone learning in the open.
+
+---
+
+## Contents
 
 <!-- AUTO-GENERATED-START -->
 
@@ -12,60 +27,77 @@ A personal knowledge base of **learning guides** and **interview preparation not
 
 | # | Topic | File |
 |---|-------|------|
-| 1 | Git | [`cs_git.md`](cheatsheets/cs_git.md) |
+| 1 | Python Cheatsheet | [`python-cheatsheet.md`](cheatsheets/python-cheatsheet.md) |
 
 ### 🎯 Interview Guides
 
 | # | Topic | File |
 |---|-------|------|
-| 1 | Python | [`ig_python.md`](interview-guides/ig_python.md) |
+| 1 | Python Interview Guide | [`python-interview-guide.md`](interview-guides/python-interview-guide.md) |
 
 ### 📚 Learning Guides
 
 | # | Topic | File |
 |---|-------|------|
-| 1 | Api | [`lg_api.md`](learning-guides/lg_api.md) |
-| 2 | Python | [`lg_python.md`](learning-guides/lg_python.md) |
+| 1 | Api Guide | [`api-guide.md`](learning-guides/api-guide.md) |
+| 2 | Python Guide | [`python-guide.md`](learning-guides/python-guide.md) |
 
 <!-- AUTO-GENERATED-END -->
 
 ---
 
-## 🛠️ How the Auto-Index Works
+## Folder Structure
 
-1. Drop a markdown file into any top-level folder (e.g., `learning-guides/lg_javascript.md`).
-2. Commit and push to `main`.
-3. The **Auto-update README** workflow runs `scripts/update_readme.py`, regenerates the tables above between the `AUTO-GENERATED` markers, and pushes the updated README back.
-
-Content outside the markers is preserved, so you can freely edit this intro, add badges, or extend the "How It Works" section.
-
-### File Naming Convention
-
-Files follow a `<prefix>_<topic>.md` scheme where the prefix identifies the folder:
-
-| Folder              | Prefix | Example                        | Topic Shown     |
-| ------------------- | ------ | ------------------------------ | --------------- |
-| `learning-guides/`  | `lg_`  | `lg_python.md`                 | Python          |
-| `interview-guides/` | `ig_`  | `ig_system-design.md`          | System Design   |
-
-Hyphens in filenames become spaces in the topic name, and each word is title-cased.
-
-### Adding a New Section
-
-Just create a new folder with markdown files — the script picks it up automatically and generates a fresh table for it. To give the folder a prettier display name (with an emoji, etc.), add an entry to `FOLDER_TITLES` in `scripts/update_readme.py`:
-
-```python
-FOLDER_TITLES = {
-    "learning-guides": "📚 Learning Guides",
-    "interview-guides": "🎯 Interview Guides",
-    "your-new-folder": "✨ Your New Folder",
-}
+```
+ai-fullstack-prep-guide/
+├── learning-guides/      # Deep-dive notes on a topic
+├── interview-guides/     # Interview-focused walkthroughs
+├── cheatsheets/          # Quick-reference sheets
+└── scripts/
+    └── update_readme.py  # Auto-generates the tables above
 ```
 
-### Running Locally
+New folders are picked up automatically — drop a markdown file in and the index updates on the next push.
 
-To preview README changes before pushing:
+---
+
+## How the Auto-Index Works
+
+A GitHub Action runs on every push that touches a `.md` file or the generator script:
+
+1. `scripts/update_readme.py` scans all content folders for markdown files.
+2. It derives the topic name directly from the filename — hyphens become spaces, words are title-cased.
+3. The tables between the `AUTO-GENERATED` markers in this file are rewritten.
+4. The updated README is committed back automatically with `[skip ci]` to prevent loops.
+
+To preview locally before pushing:
 
 ```bash
-python scripts/update_readme.py
+python3 scripts/update_readme.py
 ```
+
+---
+
+## File Naming
+
+Files use descriptive, hyphenated names that map directly to table entries:
+
+| Filename | Displayed as |
+|----------|-------------|
+| `python-guide.md` | Python Guide |
+| `system-design-basics.md` | System Design Basics |
+| `transformer-architecture.md` | Transformer Architecture |
+
+---
+
+## Contributing / Using This
+
+This is a personal repo, but you are welcome to:
+
+- **Reference** any notes for your own study
+- **Fork** the repo and adapt the structure for your own learning
+- **Open an issue** if you spot an error or want to suggest a topic
+
+---
+
+*Maintained by [Sarvesh Kishor Talele](https://github.com/sarveshtalele) — learning in public.*
