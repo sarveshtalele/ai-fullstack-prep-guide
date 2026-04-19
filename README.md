@@ -25,20 +25,20 @@ There is no course or curriculum here — just honest notes from someone learnin
 
 ### 📚 Learning Guides
 
-| # | Topic | File |
+| No. | Topic | File |
 |---|-------|------|
 | 1 | Api Guide | [`api-guide.md`](learning-guides/api-guide.md) |
 | 2 | Python Guide | [`python-guide.md`](learning-guides/python-guide.md) |
 
 ### 🎯 Interview Guides
 
-| # | Topic | File |
+| No. | Topic | File |
 |---|-------|------|
 | 1 | Python Interview Guide | [`python-interview-guide.md`](interview-guides/python-interview-guide.md) |
 
 ### 📋 Cheat Sheets
 
-| # | Topic | File |
+| No. | Topic | File |
 |---|-------|------|
 | 1 | Python Cheatsheet | [`python-cheatsheet.md`](cheatsheets/python-cheatsheet.md) |
 
