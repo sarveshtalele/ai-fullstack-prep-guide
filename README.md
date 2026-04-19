@@ -27,7 +27,7 @@ There is no course or curriculum here — just honest notes from someone learnin
 
 | # | Topic | File |
 |---|-------|------|
-| 1 | Api Guide | [`api-guide.md`](learning-guides/api-guide.md) |
+| 1 | API Guide | [`api-guide.md`](learning-guides/api-guide.md) |
 | 2 | Python Guide | [`python-guide.md`](learning-guides/python-guide.md) |
 
 ### 🎯 Interview Guides
