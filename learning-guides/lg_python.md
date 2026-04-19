@@ -83,7 +83,7 @@ Based on the tutorial content provided, here is a one-line explanation for each 
 - **Memory Addresses:** The specific numerical locations in a computer's RAM where data objects are stored, accessible via the `id()` function.
 
 ```
-# Variable serves as a reference
+# Variable serves as a reference 
 x = [1, 2, 3] 
 y = x          # Both x and y now point to the same list object
 
