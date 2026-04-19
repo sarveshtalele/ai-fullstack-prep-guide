@@ -18,7 +18,8 @@ A personal knowledge base of **learning guides** and **interview preparation not
 
 | # | Topic | File |
 |---|-------|------|
-| 1 | Python | [`lg_python.md`](learning-guides/lg_python.md) |
+| 1 | Api | [`lg_api.md`](learning-guides/lg_api.md) |
+| 2 | Python | [`lg_python.md`](learning-guides/lg_python.md) |
 
 <!-- AUTO-GENERATED-END -->
 
