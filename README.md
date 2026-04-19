@@ -2,6 +2,9 @@
 
 A personal knowledge base covering AI, full-stack engineering, and system design — built while learning in public. All notes, guides, and cheat sheets are openly available. Feel free to reference, fork, or share anything here.
 
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Sarvesh%20Talele-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/sarveshtalele/)
+
+[![Medium](https://img.shields.io/badge/Medium-@sarveshtalele-000000?style=for-the-badge&logo=medium&logoColor=white)](https://medium.com/@sarveshtalele)
 
 
 ## About This Repo
