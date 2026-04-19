@@ -2,7 +2,7 @@
 
 A personal knowledge base covering AI, full-stack engineering, and system design — built while learning in public. All notes, guides, and cheat sheets are openly available. Feel free to reference, fork, or share anything here.
 
----
+
 
 ## About This Repo
 
@@ -17,7 +17,7 @@ Topics span the full AI engineering stack:
 
 There is no course or curriculum here — just honest notes from someone learning in the open.
 
----
+
 
 ## Contents
 
@@ -44,7 +44,7 @@ There is no course or curriculum here — just honest notes from someone learnin
 
 <!-- AUTO-GENERATED-END -->
 
----
+
 
 ## Folder Structure
 
@@ -76,7 +76,7 @@ To preview locally before pushing:
 python3 scripts/update_readme.py
 ```
 
----
+
 
 ## File Naming
 
@@ -88,7 +88,7 @@ Files use descriptive, hyphenated names that map directly to table entries:
 | `system-design-basics.md` | System Design Basics |
 | `transformer-architecture.md` | Transformer Architecture |
 
----
+
 
 ## Contributing / Using This
 
