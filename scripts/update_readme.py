@@ -9,6 +9,7 @@ ROOT = Path(__file__).parent.parent
 FOLDER_TITLES = {
     "learning-guides": "📚 Learning Guides",
     "interview-guides": "🎯 Interview Guides",
+    "cheatsheets": "📋 Cheat Sheets",
 }
 
 SKIP_FOLDERS = {".git", ".github", "scripts", ".obsidian", ".claude", "__pycache__"}

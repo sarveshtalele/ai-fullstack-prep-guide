@@ -8,6 +8,12 @@ A personal knowledge base of **learning guides** and **interview preparation not
 
 <!-- AUTO-GENERATED-START -->
 
+### 📋 Cheat Sheets
+
+| # | Topic | File |
+|---|-------|------|
+| 1 | Git | [`cs_git.md`](cheatsheets/cs_git.md) |
+
 ### 🎯 Interview Guides
 
 | # | Topic | File |
