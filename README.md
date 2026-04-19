@@ -1,6 +1,6 @@
 # AI Full Stack Prep Guide
 
-> A personal knowledge base covering AI, full-stack engineering, and system design — built while learning in public. All notes, guides, and cheat sheets are openly available. Feel free to reference, fork, or share anything here.
+A personal knowledge base covering AI, full-stack engineering, and system design — built while learning in public. All notes, guides, and cheat sheets are openly available. Feel free to reference, fork, or share anything here.
 
 ---
 
@@ -27,7 +27,7 @@ There is no course or curriculum here — just honest notes from someone learnin
 
 | # | Topic | File |
 |---|-------|------|
-| 1 | Api Guide | [`api-guide.md`](learning-guides/api-guide.md) |
+| 1 | API Guide | [`api-guide.md`](learning-guides/api-guide.md) |
 | 2 | Python Guide | [`python-guide.md`](learning-guides/python-guide.md) |
 
 ### 🎯 Interview Guides
