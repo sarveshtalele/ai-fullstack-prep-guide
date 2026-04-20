@@ -34,6 +34,47 @@ Table of Contents:
       - [2. UTF-8 (The Industry Standard)](#2-utf-8-the-industry-standard)
       - [3. UTF-16 (The Middle Ground)](#3-utf-16-the-middle-ground)
       - [4. UTF-32 (The Fixed-Width Option)](#4-utf-32-the-fixed-width-option)
+  - [Operators](#operators)
+    - [A. Arithmetic Operators](#a-arithmetic-operators)
+    - [B. Comparison (Relational) Operators](#b-comparison-relational-operators)
+    - [C. Assignment Operators](#c-assignment-operators)
+    - [D. Bitwise Operators](#d-bitwise-operators)
+    - [E. Logical Operators](#e-logical-operators)
+    - [F. Membership Operators](#f-membership-operators)
+    - [G. Identity Operators](#g-identity-operators)
+    - [H. Operator Precedence (Highest to Lowest)](#h-operator-precedence-highest-to-lowest)
+    - [I. Membership Operators](#i-membership-operators)
+      - [1. The `in` Operator](#1-the-in-operator)
+      - [2. The `not in` Operator](#2-the-not-in-operator)
+      - [3. Usage with Sequences (Lists \& Tuples)](#3-usage-with-sequences-lists--tuples)
+      - [4. Usage with Sets](#4-usage-with-sets)
+      - [5. Usage with Dictionaries](#5-usage-with-dictionaries)
+    - [J. Identity Operators](#j-identity-operators)
+      - [1. The `is` Operator](#1-the-is-operator)
+      - [2. The `is not` Operator](#2-the-is-not-operator)
+      - [3. The `id()` Function](#3-the-id-function)
+      - [4. Key Takeaway: Identity (`is`) vs. Equality (`==`)](#4-key-takeaway-identity-is-vs-equality-)
+  - [Comments](#comments)
+    - [A. Single-Line Comments](#a-single-line-comments)
+    - [B. Multi-Line Comments (Consecutive)](#b-multi-line-comments-consecutive)
+    - [C. Multi-Line Comments (Triple Quotes)](#c-multi-line-comments-triple-quotes)
+    - [D. Docstrings (Documentation Strings)](#d-docstrings-documentation-strings)
+    - [E. Accessing Documentation](#e-accessing-documentation)
+  - [Input \& Output](#input--output)
+    - [A. The `input()` Function](#a-the-input-function)
+    - [B. Type Casting with Type Hinting](#b-type-casting-with-type-hinting)
+    - [C. Modern Formatting: F-Strings](#c-modern-formatting-f-strings)
+    - [D. Advanced `print()` Control](#d-advanced-print-control)
+    - [E. Practical Example: Area Calculator](#e-practical-example-area-calculator)
+  - [Control Flow](#control-flow)
+    - [A. Sequential Execution](#a-sequential-execution)
+    - [B. Decision Making: `if-elif-else`](#b-decision-making-if-elif-else)
+    - [C. Iteration: `for` Loop](#c-iteration-for-loop)
+    - [D. Iteration: `while` Loop](#d-iteration-while-loop)
+    - [E. Loop Control: `break`, `continue`, and `pass`](#e-loop-control-break-continue-and-pass)
+    - [F. Loop with `else` Clause](#f-loop-with-else-clause)
+    - [G. Nested Control Flow](#g-nested-control-flow)
+    - [H. Modern Best Practice](#h-modern-best-practice)
 
 
 ## Introduction
@@ -518,3 +559,477 @@ print(f"UTF-32 'A': {text.encode('utf-32')}")
 
 # Output: b'\xff\xfe\x00\x00A\x00\x00\x00' (Exactly 4 bytes for data)
 ```
+
+## Operators
+
+**Python operators** are special symbols or keywords used to perform specific operations on variables and values (operands).
+
+### A. Arithmetic Operators
+
+Arithmetic operators are used to perform basic mathematical calculations like addition and subtraction.
+
+| **Operator** | **Name**            | **Example (a=10, b=20)** |
+| ------------ | ------------------- | ------------------------ |
+| `+`          | Addition            | `a + b = 30`             |
+| `-`          | Subtraction         | `a - b = -10`            |
+| `*`          | Multiplication      | `a * b = 200`            |
+| `/`          | Division            | `b / a = 2.0`            |
+| `%`          | Modulus (Remainder) | `b % a = 0`              |
+| `**`         | Exponent (Power)    | `a ** b`                 |
+| `//`         | Floor Division      | `9 // 2 = 4`             |
+
+### B. Comparison (Relational) Operators
+
+Comparison operators evaluate the relationship between two operands and return a Boolean value (`True` or `False`).
+
+|**Operator**|**Name**|**Example (a=10, b=20)**|
+|---|---|---|
+|`==`|Equal|`a == b` is False|
+|`!=`|Not equal|`a != b` is True|
+|`>`|Greater than|`a > b` is False|
+|`<`|Less than|`a < b` is True|
+|`>=`|Greater than or equal to|`a >= b` is False|
+|`<=`|Less than or equal to|`a <= b` is True|
+
+### C. Assignment Operators
+
+Assignment operators are used to assign new values to variables, often combining an operation with the assignment.
+
+|**Operator**|**Example**|**Equivalent To**|
+|---|---|---|
+|`=`|`a = 10`|`a = 10`|
+|`+=`|`a += 5`|`a = a + 5`|
+|`-=`|`a -= 5`|`a = a - 5`|
+|`*=`|`a *= 5`|`a = a * 5`|
+|`/=`|`a /= 5`|`a = a / 5`|
+|`%=`|`a %= 5`|`a = a % 5`|
+|`**=`|`a **= 5`|`a = a ** 5`|
+|`//=`|`a //= 5`|`a = a // 5`|
+
+### D. Bitwise Operators
+
+Bitwise operators perform operations directly on the binary representations (bits) of numbers.
+
+|**Operator**|**Name**|**Description**|
+|---|---|---|
+|`&`|AND|Sets each bit to 1 if both bits are 1|
+|`\|`|OR|Sets each bit to 1 if one of two bits is 1|
+|`^`|XOR|Sets each bit to 1 if only one of two bits is 1|
+|`~`|NOT|Inverts all the bits|
+|`<<`|Zero fill left shift|Shifts bits left by pushing zeros in from the right|
+|`>>`|Signed right shift|Shifts bits right by pushing copies of the leftmost bit|
+
+### E. Logical Operators
+
+Logical operators are used to combine multiple conditional statements.
+
+| **Operator** | **Name**    | **Description**                               |
+| ------------ | ----------- | --------------------------------------------- |
+| `and`        | Logical AND | Returns True if both statements are true      |
+| `or`         | Logical OR  | Returns True if one of the statements is true |
+| `not`        | Logical NOT | Reverses the result (True becomes False)      |
+
+### F. Membership Operators
+
+Membership operators test if a specific value or variable is found within a sequence (string, list, or tuple).
+
+|**Operator**|**Description**|**Example**|
+|---|---|---|
+|`in`|Returns True if value is present in the sequence|`x in y`|
+|`not in`|Returns True if value is NOT present in the sequence|`x not in y`|
+
+### G. Identity Operators
+
+Identity operators compare the memory location of two objects to see if they are actually the same instance.
+
+|**Operator**|**Description**|**Example**|
+|---|---|---|
+|`is`|Returns True if both variables point to the same object|`x is y`|
+|`is not`|Returns True if both variables point to different objects|`x is not y`|
+
+### H. Operator Precedence (Highest to Lowest)
+
+Precedence determines the order in which operations are evaluated in an expression.
+
+|**Level**|**Operators**|**Description**|
+|---|---|---|
+|1|`**`|Exponentiation|
+|2|`~`, `+`, `-`|Complement, Unary plus/minus|
+|3|`*`, `/`, `%`, `//`|Multiplication, Division, Modulo, Floor division|
+|4|`+`, `-`|Addition and Subtraction|
+|5|`>>`, `<<`|Bitwise shifts|
+|6|`&`|Bitwise AND|
+|7|`^`, `\|`|Bitwise XOR and OR|
+|8|`<=`, `<`, `>`, `>=`|Comparison operators|
+|9|`==`, `!=`|Equality operators|
+|10|`=`, `%=`, `+=`, etc.|Assignment operators|
+|11|`is`, `is not`|Identity operators|
+|12|`in`, `not in`|Membership operators|
+|13|`not`, `or`, `and`|Logical operators|
+### I. Membership Operators
+
+Membership operators are used to test whether a value or variable is found within a sequence (such as strings, lists, tuples, sets, or dictionaries).
+
+**Quick Tip:** Membership testing is case-sensitive for strings and generally highly efficient for sets and dictionaries compared to lists.
+
+#### 1. The `in` Operator
+
+**Definition:** Returns `True` if the specified value exists within the given container, and `False` otherwise.
+
+```
+var = "TutorialsPoint"
+print("P in var:", "P" in var)
+# Output: P in var: True
+```
+
+#### 2. The `not in` Operator
+
+**Definition:** Returns `True` if the specified value is absent from the container, and `False` if the value is found.
+
+```
+var = [10, 20, 30, 40]
+print("50 not in var:", 50 not in var)
+# Output: 50 not in var: True
+```
+
+#### 3. Usage with Sequences (Lists & Tuples)
+
+**Definition:** Checks if an individual element exists as a top-level member of the list or tuple.
+
+```
+# Note: Nested sequences must match exactly to return True
+var = (10, 20, 30, 40)
+print("(10, 20) in var:", (10, 20) in var)
+# Output: (10, 20) in var: False
+```
+
+#### 4. Usage with Sets
+
+**Definition:** Evaluates whether an item is part of the unordered collection of unique elements.
+
+```
+var = {10, 20, 30, 40}
+print("20 in var:", 20 in var)
+# Output: 20 in var: True
+```
+
+#### 5. Usage with Dictionaries
+
+**Definition:** Checks for the presence of a specific **key** within the dictionary, ignoring the values.
+
+```
+var = {1: 10, 2: 20}
+
+print("2 in var:", 2 in var)
+
+print("20 in var:", 20 in var)
+
+# Output: 
+# 2 in var: True
+# 20 in var: False
+```
+
+### J. Identity Operators
+
+Identity operators are used to determine if two variables point to the **exact same object** in memory, rather than just having the same value.
+
+#### 1. The `is` Operator
+
+**Definition:** Returns `True` if both variables point to the same memory location (shared ID), and `False` otherwise.
+
+```
+a = [1, 2, 3]
+b = a  # b points to the same object as a
+c = [1, 2, 3] # c is a new object with the same values
+
+print("a is b:", a is b)
+print("a is c:", a is c)
+# Output: 
+# a is b: True
+# a is c: False
+```
+
+#### 2. The `is not` Operator
+
+**Definition:** Returns `True` if the variables point to different objects in memory, even if their contents are identical.
+
+```
+a = [1, 2, 3]
+b = [1, 2, 3]
+print("a is not b:", a is not b)
+# Output: a is not b: True
+```
+
+#### 3. The `id()` Function
+
+**Definition:** Returns the unique integer identity (memory address) of an object, which is used by identity operators for comparison.
+
+```
+x = "Python"
+y = x
+print(id(x) == id(y))
+# Output: True
+```
+
+
+#### 4. Key Takeaway: Identity (`is`) vs. Equality (`==`)
+
+- **`==` (Equality):** Checks if the **values** are the same (e.g., two different wallets both containing $10).
+- **`is` (Identity):** Checks if they are the **exact same instance** (e.g., two people talking about the same physical wallet).
+
+## Comments
+
+Comments are programmer-readable annotations in the source code that are ignored by the Python interpreter and used to make code easier to understand.
+
+### A. Single-Line Comments
+
+**Definition:** Starts with a hash symbol (`#`) and continues to the end of the line, used for short notes.
+
+```
+# This is a standalone comment
+print("Hello!")  # This is an inline comment
+# Output: Hello!
+```
+
+### B. Multi-Line Comments (Consecutive)
+
+**Definition:** Created by placing a hash symbol (`#`) at the start of each individual line to explain complex logic.
+
+```
+# This function adds two numbers
+# and returns the total sum
+def add(a, b):
+    return a + b
+```
+
+### C. Multi-Line Comments (Triple Quotes)
+
+**Definition:** Uses `'''` or `"""` to wrap text; technically string literals, they act as comments when not assigned to a variable.
+
+```
+"""
+This is a multi-line string
+used as a block comment
+to explain this section.
+"""
+print("Logic executed")
+# Output: Logic executed
+```
+
+### D. Docstrings (Documentation Strings)
+
+**Definition:** Special triple-quoted comments placed immediately after a function, class, or module definition to describe its purpose.
+
+```
+def multiply(a, b):
+    """Multiplies two numbers and returns the result."""
+    return a * b
+
+print(multiply.__doc__)
+# Output: Multiplies two numbers and returns the result.
+```
+
+### E. Accessing Documentation
+
+**Definition:** Docstrings can be retrieved programmatically using the `.__doc__` attribute or the built-in `help()` function.
+
+```
+def example():
+    """Example docstring."""
+    pass
+
+help(example)
+# Output: Help on function example in module __main__: example() Example docstring.
+```
+
+
+> **Note:** While `#` is for internal developer notes, **Docstrings** are meant for anyone using your code to understand how to interact with your functions or classes.
+
+## Input & Output
+
+### A. The `input()` Function
+
+**Definition:** Captures user input as a **string** and optionally displays a prompt message.
+
+```
+name = input("Enter your name: ")
+
+print(f"Hello, {name}!") 
+
+# Output: Hello, [User Input]!
+```
+
+### B. Type Casting with Type Hinting
+
+**Definition:** Converts the default string input into other types (like `int` or `float`) to allow calculations, often clarified by "Type Hinting" variables.
+
+```
+# 'age: int' is a type hint (it informs the developer the variable should be an integer)
+
+age: int = int(input("Enter your age: "))
+
+print(f"Next year, you will be {age + 1}.")
+
+# Output (if 25 is entered): Next year, you will be 26.
+```
+
+### C. Modern Formatting: F-Strings
+
+**Definition:** Introduced in Python 3.6, **Formatted String Literals** (f-strings) allow you to embed expressions inside string literals using curly braces `{}`.
+
+```
+price: float = 49.99
+
+quantity: int = 3
+
+# F-strings are faster and more readable than comma-separation
+
+print(f"Total Cost: ${price * quantity}")
+
+# Output: Total Cost: $149.97
+```
+
+### D. Advanced `print()` Control
+
+**Definition:** The `print()` function uses `sep` to define what goes between items and `end` to define what happens at the conclusion of the line.
+
+```
+# Using 'sep' for custom separators and 'end' to prevent a newline
+
+print("Python", "is", "powerful", sep="-", end="!!")
+
+# Output: Python-is-powerful!!
+```
+
+### E. Practical Example: Area Calculator
+
+This script demonstrates **Type Hinting**, **Input Casting**, and **F-strings** all in one:
+
+```
+# Providing clear type hints for the variables
+
+width: float = float(input("Enter width: "))
+height: float = float(input("Enter height: "))
+
+area: float = width * height
+
+# Using f-string for a clean, readable result
+
+print(f"The area of a {width}x{height} rectangle is {area}.")
+```
+
+## Control Flow
+
+Control flow statements determine the order in which code is executed, allowing for decision-making, repetition, and structural jumps.
+
+### A. Sequential Execution
+
+**Definition:** The default behavior where Python executes instructions one after another, from top to bottom.
+
+```
+x = 5
+y = 10
+print(f"Sum: {x + y}")
+# Output: Sum: 15
+```
+
+### B. Decision Making: `if-elif-else`
+
+**Definition:** Executes specific blocks of code based on whether a Boolean condition evaluates to `True`.
+
+```
+marks: int = 85
+if marks >= 90:
+    print("Grade: A")
+elif marks >= 75:
+    print("Grade: B")
+else:
+    print("Grade: C")
+# Output: Grade: B
+```
+
+### C. Iteration: `for` Loop
+
+**Definition:** Iterates over a sequence (list, tuple, string) or a range of numbers.
+
+```
+for i in range(3):
+    print(f"Iteration {i}")
+# Output: 
+# Iteration 0
+# Iteration 1
+# Iteration 2
+```
+
+### D. Iteration: `while` Loop
+
+**Definition:** Repeats a block of code as long as a specified condition remains `True`.
+
+```
+count: int = 1
+while count <= 3:
+    print(f"Count: {count}")
+    count += 1
+# Output:
+# Count: 1
+# Count: 2
+# Count: 3
+```
+
+### E. Loop Control: `break`, `continue`, and `pass`
+
+**Definition:** `break` exits the loop entirely; `continue` skips to the next iteration; `pass` is a null placeholder used to avoid syntax errors in empty code blocks.
+
+```
+for n in range(1, 6):
+    if n == 2:
+        continue  # Skip the rest of this iteration
+    if n == 4:
+        break     # Exit the loop entirely
+    if n == 3:
+        pass      # Placeholder: does nothing, just moves to next line
+    print(f"Number: {n}")
+# Output:
+# Number: 1
+# Number: 3
+```
+
+
+### F. Loop with `else` Clause
+
+**Definition:** A unique Python feature where the `else` block executes only if the loop finished naturally (without hitting a `break`).
+
+```
+for i in range(3):
+    print(i)
+else:
+    print("Loop finished successfully!")
+# Output:
+# 0
+# 1
+# 2
+# Loop finished successfully!
+```
+
+### G. Nested Control Flow
+
+**Definition:** Placing a conditional statement or loop inside another to handle complex multi-layered logic.
+
+```
+groups: list = [[1, 2], [3, 4]]
+for group in groups:
+    for item in group:
+        if item % 2 == 0:
+            print(f"Even: {item}")
+# Output:
+# Even: 2
+# Even: 4
+```
+
+
+### H. Modern Best Practice
+
+In modern Python, while **nested loops** are powerful, developers often use **List Comprehensions** or the `itertools` module to keep code "flat" and more readable.
+
+
+
