@@ -1,7 +1,7 @@
 
 # Python Learning Guide
 
-Table of Contents:
+**Table of Contents:**
 
 - [Python Learning Guide](#python-learning-guide)
   - [Introduction](#introduction)
