@@ -60,7 +60,6 @@ ai-fullstack-prep-guide/
 
 New folders are picked up automatically — drop a markdown file in and the index updates on the next push.
 
----
 
 ## How the Auto-Index Works
 
