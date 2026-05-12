@@ -108,10 +108,10 @@
       - [C. The Golden Rule of Argument Order](#c-the-golden-rule-of-argument-order)
   - [Variable Scope](#variable-scope)
     - [A. Modifying Global Variables (`global`)](#a-modifying-global-variables-global)
-      - [B. Modifying Nonlocal Variables (`nonlocal`)](#b-modifying-nonlocal-variables-nonlocal)
+    - [B. Modifying Nonlocal Variables (`nonlocal`)](#b-modifying-nonlocal-variables-nonlocal)
   - [Namespaces](#namespaces)
-      - [Types of Namespaces:](#types-of-namespaces)
-      - [A. The `globals()` and `locals()` Functions](#a-the-globals-and-locals-functions)
+    - [Types of Namespaces:](#types-of-namespaces)
+    - [A. The `globals()` and `locals()` Functions](#a-the-globals-and-locals-functions)
   - [Function Annotations](#function-annotations)
     - [A. Syntax and Usage](#a-syntax-and-usage)
     - [B. Accessing Annotations](#b-accessing-annotations)
@@ -1528,7 +1528,7 @@ print(marks)
 # Output: 70
 ```
 
-#### B. Modifying Nonlocal Variables (`nonlocal`)
+### B. Modifying Nonlocal Variables (`nonlocal`)
 
 Used primarily in nested functions to modify a variable defined in the immediate outer function's scope.
 
@@ -1551,13 +1551,13 @@ print(outer_function())
 
 **Definition:** A namespace is a behind-the-scenes dictionary Python uses to map variable names (identifiers) to their actual objects in memory, preventing naming conflicts.
 
-#### Types of Namespaces:
+### Types of Namespaces:
 
 1. **Built-in Namespace:** Contains Python's default functions (like `print()`, `len()`). Loaded when Python starts.
 2. **Global Namespace:** Contains names defined in the main program level.
 3. **Local Namespace:** Contains names defined inside the currently executing function.
 
-#### A. The `globals()` and `locals()` Functions
+### A. The `globals()` and `locals()` Functions
 
 Python provides built-in functions to view the current dictionaries representing these namespaces.
 - **`globals()`:** Returns a dictionary of the current global symbol table.
