@@ -2,7 +2,6 @@
 # Python Learning Guide
 
 **Table of Contents:**
-
 - [Python Learning Guide](#python-learning-guide)
   - [Introduction](#introduction)
     - [How Python code is executed](#how-python-code-is-executed)
@@ -75,6 +74,48 @@
     - [F. Loop with `else` Clause](#f-loop-with-else-clause)
     - [G. Nested Control Flow](#g-nested-control-flow)
     - [H. Modern Best Practice](#h-modern-best-practice)
+  - [Functions](#functions)
+    - [A. Types of Python Functions](#a-types-of-python-functions)
+    - [B. Defining and Calling a Function](#b-defining-and-calling-a-function)
+    - [C. Pass by Reference vs. Value](#c-pass-by-reference-vs-value)
+    - [D. Types of Function Arguments](#d-types-of-function-arguments)
+      - [1. Positional (Required) Arguments](#1-positional-required-arguments)
+      - [2. Keyword Arguments](#2-keyword-arguments)
+      - [3. Default Arguments](#3-default-arguments)
+      - [4. Positional-Only Arguments (`/`)](#4-positional-only-arguments-)
+      - [5. Keyword-Only Arguments (`*`)](#5-keyword-only-arguments-)
+      - [6. Arbitrary (Variable-Length) Arguments (`*args`)](#6-arbitrary-variable-length-arguments-args)
+    - [E. Order of Python Function Arguments](#e-order-of-python-function-arguments)
+    - [F. Return Values](#f-return-values)
+    - [G. Anonymous Functions (`lambda`)](#g-anonymous-functions-lambda)
+    - [H. Variable Scope](#h-variable-scope)
+    - [I. Default Arguments](#i-default-arguments)
+      - [A. Basic Usage](#a-basic-usage)
+      - [B. Combining with Positional Arguments](#b-combining-with-positional-arguments)
+      - [C. The "Mutable Default Argument" Trap](#c-the-mutable-default-argument-trap)
+    - [J. Keyword Arguments](#j-keyword-arguments)
+      - [A. Basic Usage](#a-basic-usage-1)
+      - [B. Independence of Order](#b-independence-of-order)
+      - [C. Mixed Calling \& The Positional Rule](#c-mixed-calling--the-positional-rule)
+    - [K. Positional Arguments](#k-positional-arguments)
+      - [A. Key Rules for Positional Arguments](#a-key-rules-for-positional-arguments)
+      - [B. Basic Usage (Correct Mapping)](#b-basic-usage-correct-mapping)
+      - [C. Common Errors with Positional Arguments](#c-common-errors-with-positional-arguments)
+      - [D. Positional vs. Keyword Arguments](#d-positional-vs-keyword-arguments)
+    - [L. Arbitrary Arguments (`*args` and `kwargs`)](#l-arbitrary-arguments-args-and-kwargs)
+      - [A. Arbitrary Positional Arguments (`*args`)](#a-arbitrary-positional-arguments-args)
+      - [B. Arbitrary Keyword Arguments (`kwargs`)](#b-arbitrary-keyword-arguments-kwargs)
+      - [C. The Golden Rule of Argument Order](#c-the-golden-rule-of-argument-order)
+  - [Variable Scope](#variable-scope)
+    - [A. Modifying Global Variables (`global`)](#a-modifying-global-variables-global)
+      - [B. Modifying Nonlocal Variables (`nonlocal`)](#b-modifying-nonlocal-variables-nonlocal)
+  - [Namespaces](#namespaces)
+      - [Types of Namespaces:](#types-of-namespaces)
+      - [A. The `globals()` and `locals()` Functions](#a-the-globals-and-locals-functions)
+  - [Function Annotations](#function-annotations)
+    - [A. Syntax and Usage](#a-syntax-and-usage)
+    - [B. Accessing Annotations](#b-accessing-annotations)
+    - [C. Annotations with Default Values](#c-annotations-with-default-values)
 
 
 ## Introduction
@@ -1026,10 +1067,579 @@ for group in groups:
 # Even: 4
 ```
 
-
 ### H. Modern Best Practice
 
 In modern Python, while **nested loops** are powerful, developers often use **List Comprehensions** or the `itertools` module to keep code "flat" and more readable.
+
+## Functions
+
+**Definition:** A block of organised, reusable code used to perform a single, related action. Functions provide better modularity for an application and enable a high degree of code reuse.
+
+### A. Types of Python Functions
+
+|**Type**|**Description**|
+|---|---|
+|**Built-in Functions**|Functions included in Python's standard library that are always available in memory (e.g., `print()`, `int()`, `len()`).|
+|**Module Functions**|Functions defined inside built-in or external modules. They must be imported into memory before use.|
+|**User-defined Functions**|Custom functions created by the developer to perform specific, tailored operations.|
+
+### B. Defining and Calling a Function
+
+**Definition:** Functions are defined using the `def` keyword, followed by the function name, parentheses (which may contain parameters), and a colon. The code block must be indented.
+
+```
+# Defining the function
+def greetings(name):
+    """This is a docstring explaining the function."""
+    print(f"Hello {name}")
+    return
+
+# Calling the function
+greetings("Samay")
+
+# Output: Hello Samay
+```
+
+### C. Pass by Reference vs. Value
+
+In Python, variables act as labels pointing to objects in memory. Python uses a **"pass by object reference"** mechanism.
+
+- **Immutable Objects (e.g., Integers, Strings):** If you pass an integer and modify it inside the function, Python creates a _new_ object. The original variable outside the function remains unchanged.
+- **Mutable Objects (e.g., Lists, Dictionaries):** If you pass a list and modify it (like appending an item), the original list outside the function is also updated because both point to the exact same memory address.
+
+```
+# Mutable Object Example
+def add_item(my_list):
+    my_list.append(100)
+
+numbers = [10, 20, 30]
+add_item(numbers)
+
+print(numbers)
+# Output: [10, 20, 30, 100]
+```
+### D. Types of Function Arguments
+
+#### 1. Positional (Required) Arguments
+
+**Definition:** Arguments passed in the exact positional order defined by the function. The number of arguments must match exactly.
+
+```
+def print_info(name, age):
+    print(f"Name: {name}, Age: {age}")
+
+print_info("Alice", 30)
+
+# Output: Name: Alice, Age: 30
+```
+#### 2. Keyword Arguments
+
+**Definition:** Arguments passed using the parameter name. This allows you to place them out of order since Python matches them by keyword.
+
+```
+print_info(age=50, name="Miki")
+# Output: Name: Miki, Age: 50
+```
+#### 3. Default Arguments
+
+**Definition:** Arguments that assume a default value if no value is provided in the function call.
+
+```
+def print_user(name, role="Guest"):
+    print(f"{name} is a {role}")
+
+print_user("Alice")
+# Output: Alice is a Guest
+```
+#### 4. Positional-Only Arguments (`/`)
+
+**Definition:** Arguments that _must_ be specified by position and cannot be passed as keywords. Placed before a `/` symbol.
+
+```
+def pos_fun(x, y, /, z):
+    print(x + y + z)
+
+pos_fun(33, 22, z=11)
+# Output: 66
+```
+#### 5. Keyword-Only Arguments (`*`)
+
+**Definition:** Arguments that _must_ be specified by their keyword. Placed after an `*` symbol.
+
+```
+def kw_fun(*, num1, num2):
+    print(num1 * num2)
+
+kw_fun(num1=6, num2=8)
+# Output: 48
+```
+#### 6. Arbitrary (Variable-Length) Arguments (`*args`)
+
+**Definition:** Allows a function to accept any number of positional arguments, packing them into a tuple.
+
+```
+def print_all(*args):
+    for arg in args:
+        print(arg, end=" ")
+
+print_all(10, 20, 30)
+# Output: 10 20 30
+```
+### E. Order of Python Function Arguments
+
+When combining different types of arguments in a single function, they **must** be declared in this specific order:
+
+1. **Positional-only arguments** (followed by `/`)
+2. **Regular positional arguments**
+3. **Default arguments**
+4. **Arbitrary positional arguments** (`*args`)
+5. **Keyword-only arguments**
+6. **Arbitrary keyword arguments** (`kwargs`)
+### F. Return Values
+
+**Definition:** The `return` keyword ends the function execution and sends the result of an expression back to the caller. If no expression is provided, it returns `None`.
+
+```
+def add(x, y):
+    return x + y
+
+result = add(10, 20)
+print(f"Total: {result}")
+# Output: Total: 30
+```
+### G. Anonymous Functions (`lambda`)
+
+**Definition:** Small, single-line functions created without the `def` keyword. They can take multiple arguments but only execute a single expression.
+
+**Syntax:** `lambda [arguments]: expression`
+
+```
+# Defining a lambda function
+sum_nums = lambda arg1, arg2: arg1 + arg2
+
+print(f"Value: {sum_nums(10, 20)}")
+# Output: Value: 30
+```
+
+### H. Variable Scope
+
+The scope of a variable determines where in the program it can be accessed.
+
+- **Local Scope:** Variables created inside a function. They can only be used within that specific function.
+- **Global Scope:** Variables created outside of any function. They can be accessed from anywhere in the file.
+
+```
+total = 0  # Global variable
+
+def calculate_sum(a, b):
+    total = a + b  # Local variable (shadows the global one inside this block)
+    print(f"Inside function: {total}")
+
+calculate_sum(10, 20)
+print(f"Outside function: {total}")
+
+# Output:
+# Inside function: 30
+# Outside function: 0
+```
+### I. Default Arguments
+
+**Definition:** Function arguments that are assigned a predefined value during the function's definition. If the caller does not provide a value for that argument, Python automatically uses the default. If a value is provided, it safely overrides the default.
+
+#### A. Basic Usage
+
+You can selectively override default arguments or rely on the predefined values when calling the function.
+
+```
+# Function definition with a default argument for 'city'
+def show_info(name, city="Hyderabad"):
+   print(f"Name: {name}")
+   print(f"City: {city}")
+   return
+
+# Calling with both arguments (Overrides the default)
+show_info(name="Ansh", city="Delhi")
+# Output: 
+# Name: Ansh
+# City: Delhi
+
+# Calling with only the required argument (Uses the default)
+show_info(name="Shrey")
+# Output: 
+# Name: Shrey
+# City: Hyderabad
+```
+
+#### B. Combining with Positional Arguments
+
+Default arguments are frequently combined with standard positional arguments.
+
+_(Note: In the function definition, default arguments must always be placed **after** non-default arguments._
+
+```
+# 'phy' and 'maths' are required, 'maxmarks' is optional
+def calculate_percent(phy, maths, maxmarks=200):
+   val = (phy + maths) * 100 / maxmarks
+   return val
+
+# Uses the default maxmarks of 200
+result_default = calculate_percent(60, 70)
+print(f"Percentage: {result_default}")
+# Output: Percentage: 65.0
+
+# Overrides the default maxmarks with 100
+result_custom = calculate_percent(40, 46, 100)
+print(f"Percentage: {result_custom}")
+# Output: Percentage: 86.0
+```
+#### C. The "Mutable Default Argument" Trap
+
+**Important Concept:** Python evaluates default arguments _only once_ when the function is defined, not each time the function is called.
+
+If you use a **mutable object** (like a `list`, `dictionary`, or `set`) as a default argument and modify it inside the function, the same object in memory is updated. Those changes will persist and leak into subsequent function calls.
+
+```
+# Using a mutable list as a default argument
+def add_to_list(nums, numeric_list=[]):
+   numeric_list.append(nums + 1)
+   print(numeric_list) 
+    
+# Function calls
+add_to_list(66)
+# Output: [67]
+
+add_to_list(68)
+# Output: [67, 69]  <-- The list remembered the previous call!
+
+add_to_list(70)
+# Output: [67, 69, 71]
+```
+### J. Keyword Arguments
+
+**Definition:** Function arguments are passed by explicitly naming the parameter (e.g., `parameter_name=value`) during the function call. This allows you to pass arguments out of their defined order, as Python matches them by their keyword rather than their position.
+#### A. Basic Usage
+
+You can call a function using standard positional arguments, or you can explicitly state the keywords to make the function call more readable.
+
+```
+# Function definition
+def print_info(name, age):
+   print(f"Name: {name}")
+   print(f"Age: {age}")
+   return
+
+# Calling via positional arguments (order matters)
+print_info("Naveen", 29)
+# Output: 
+# Name: Naveen
+# Age: 29
+
+# Calling via keyword arguments (explicit naming)
+print_info(name="Miki", age=30)
+# Output: 
+# Name: Miki
+# Age: 30
+```
+#### B. Independence of Order
+
+When you use keyword arguments for all parameters, the order in which you pass them no longer matters. Python routes the values to the correct variables based on the names provided.
+
+```
+def division(num, den):
+   quotient = num / den
+   print(f"num:{num} den:{den} quotient:{quotient}")
+
+# The order is swapped, but the result is exactly the same
+division(num=10, den=5)
+# Output: num:10 den:5 quotient:2.0
+
+division(den=5, num=10)
+# Output: num:10 den:5 quotient:2.0
+```
+
+#### C. Mixed Calling & The Positional Rule
+
+You can mix positional and keyword arguments in a single function call. However, **positional arguments must always appear before keyword arguments**.
+
+If a positional argument is placed after a keyword argument, Python will throw an error because it can no longer safely guess which position the remaining arguments belong to.
+
+```
+def division(num, den):
+   return num / den
+
+# Correct: Positional first, Keyword second
+result = division(10, den=5) 
+print(result) # Output: 2.0
+
+# Incorrect: Keyword first, Positional second
+# result = division(num=10, 5)
+
+# This will raise a SyntaxError:
+# SyntaxError: positional argument follows keyword argument
+```
+
+### K. Positional Arguments
+
+**Definition:** The most fundamental type of argument in Python. The values passed into the function call are assigned to the parameters in the exact structural order they were defined.
+
+#### A. Key Rules for Positional Arguments
+
+When utilising positional arguments, you must adhere to several strict guidelines:
+
+- **Completeness:** All defined positional arguments are strictly required to execute the function.
+- **Count Matching:** The total number of actual arguments passed must equal the exact number of formal arguments defined in the function signature.
+- **Sequential Assignment:** Values are picked up and mapped to variables purely based on their order.
+- **Type Compatibility:** The data types passed must support the operations performed within the function block.
+- **Name Independence:** The variable names passed into the function do not need to match the parameter names defined in the function.
+#### B. Basic Usage (Correct Mapping)
+
+Positional arguments are mapped sequentially. In the example below, the first value seamlessly maps to `x` and the second maps to `y`.
+
+```
+def add(x, y):
+   z = x + y
+   print(f"x={x} y={y} x+y={z}")
+
+a = 10
+b = 20
+
+# 'a' maps to 'x', 'b' maps to 'y' based entirely on position
+add(a, b)
+# Output: x=10 y=20 x+y=30
+```
+
+#### C. Common Errors with Positional Arguments
+
+**1. Missing Arguments:** Python will immediately raise an error if you fail to provide enough arguments to satisfy the function's definition.
+
+```
+def add(x, y):
+   return x + y
+
+a = 10
+# add(a) 
+
+# This will raise a TypeError:
+# TypeError: add() missing 1 required positional argument: 'y'
+```
+
+**2. Too Many Arguments:** Similarly, providing more arguments than the function has parameters for will result in an immediate error.
+
+```
+def add(x, y):
+   return x + y
+
+# add(10, 20, 30)
+
+# This will raise a TypeError:
+# TypeError: add() takes 2 positional arguments but 3 were given
+```
+
+**3. Type Mismatches:** While Python is dynamically typed, the actual arguments passed must be of a data type that is logically compatible with the operations happening inside the function.
+
+```
+def add(x, y):
+   return x + y
+
+a = "Hello"
+b = 20
+
+# add(a, b)
+
+# This will raise a TypeError because Python cannot mathematically add a string and an integer:
+# TypeError: can only concatenate str (not "int") to str
+```
+#### D. Positional vs. Keyword Arguments
+
+|**Feature**|**Positional Argument**|**Keyword Argument**|
+|---|---|---|
+|**Assignment Method**|Values are mapped based purely on their structural order.|Values are mapped explicitly using the parameter name (`name=value`).|
+|**Flexibility**|Strict. Arguments **must** be passed in the exact order defined in the function signature.|Flexible. The order of arguments can be rearranged freely during the function call.|
+|**Syntax Example**|`function(param1, param2)`|`function(param2=value2, param1=value1)`|
+### L. Arbitrary Arguments (`*args` and `kwargs`)
+
+**Definition:** Python allows you to define functions that can accept a variable (arbitrary) number of arguments. This is useful when you don't know beforehand exactly how many arguments will be passed to the function.
+
+#### A. Arbitrary Positional Arguments (`*args`)
+
+**Definition:** By prefixing an argument with a single asterisk (`*`), Python packs all remaining positional arguments passed to the function into a **tuple**.
+
+```
+# The *args parameter catches all extra positional arguments
+def add_all(*args):
+   total = 0
+   for num in args:  # 'args' acts as a tuple
+      total += num
+   return total
+
+print(add_all(10, 20, 30, 40)) 
+# Output: 100
+```
+
+#### B. Arbitrary Keyword Arguments (`kwargs`)
+
+**Definition:** By prefixing an argument with two asterisks (), Python packs all remaining keyword arguments passed to the function into a **dictionary** of key-value pairs.
+
+```
+# The **kwargs parameter catches extra keyword arguments
+def print_address(**kwargs):
+   for key, value in kwargs.items(): # 'kwargs' acts as a dictionary
+      print(f"{key}: {value}")
+
+print_address(Name="Raam", City="Mumbai", PIN="400001")
+# Output:
+# Name: Raam
+# City: Mumbai
+# PIN: 400001
+```
+
+#### C. The Golden Rule of Argument Order
+
+If a function uses a mix of different argument types, you **must** define them in this specific order to avoid syntax errors:
+
+1. Standard / Required Positional Arguments
+2. Arbitrary Positional Arguments (`*args`)
+3. Standard Keyword Arguments
+4. Arbitrary Keyword Arguments (`kwargs`)
+
+## Variable Scope
+
+**Definition:** Scope defines the specific region of a program where a variable is accessible. Python restricts variable access based on where it was created.
+
+|**Scope Type**|**Definition**|**Accessibility**|
+|---|---|---|
+|**Local**|Variables created inside a specific function or block.|Can only be used inside that specific function.|
+|**Global**|Variables created outside of any function, in the main body of the script.|Can be read from anywhere in the file.|
+|**Nonlocal**|Variables used in nested functions (a function inside a function) that are not strictly local or global.|Can be modified by the inner nested function.|
+
+### A. Modifying Global Variables (`global`)
+
+If you try to change a global variable's value from inside a function directly, Python will throw an error (it thinks you are trying to create a local variable before assigning it). You must use the `global` keyword to declare your intent to modify the outer variable.
+
+```
+marks = 50 # Global variable
+
+def update_marks():
+   global marks  # Tells Python to use the global 'marks', not make a new one
+   marks = marks + 20
+
+update_marks()
+print(marks) 
+# Output: 70
+```
+
+#### B. Modifying Nonlocal Variables (`nonlocal`)
+
+Used primarily in nested functions to modify a variable defined in the immediate outer function's scope.
+
+```
+def outer_function():
+   a = 5
+   
+   def inner_function():
+      nonlocal a # Points to 'a' in outer_function
+      a = 10
+      return a
+      
+   return inner_function()
+
+print(outer_function())
+# Output: 10
+```
+
+## Namespaces
+
+**Definition:** A namespace is a behind-the-scenes dictionary Python uses to map variable names (identifiers) to their actual objects in memory, preventing naming conflicts.
+
+#### Types of Namespaces:
+
+1. **Built-in Namespace:** Contains Python's default functions (like `print()`, `len()`). Loaded when Python starts.
+2. **Global Namespace:** Contains names defined in the main program level.
+3. **Local Namespace:** Contains names defined inside the currently executing function.
+
+#### A. The `globals()` and `locals()` Functions
+
+Python provides built-in functions to view the current dictionaries representing these namespaces.
+- **`globals()`:** Returns a dictionary of the current global symbol table.
+- **`locals()`:** Returns a dictionary of the variables currently available in the local function's scope.
+
+```
+name = "Alice" # Global
+
+def sample_func():
+   age = 30 # Local
+   print("Locals dictionary:", locals())
+
+sample_func()
+# Output: Locals dictionary: {'age': 30}
+```
+
+## Function Annotations
+
+**Definition:** Optional metadata you can attach to a function's parameters and return value to explain what data types they expect. Introduced in PEP 3107.
+
+**Important Note:** Python is dynamically typed. Annotations are completely **ignored by Python at runtime**—they do not enforce strict type checking. They are primarily used as documentation for developers, IDEs (like VSCode or PyCharm), and third-party static type checkers (like `mypy`).
+
+### A. Syntax and Usage
+
+You annotate parameters using a colon `:` and the return type using an arrow `->`.
+
+```
+# Expects 'a' and 'b' to be integers, and returns an integer
+def add_numbers(a: int, b: int) -> int:
+   return a + b
+
+# Python won't stop you from passing strings, despite the 'int' annotations!
+print(add_numbers("Hello ", "World"))
+# Output: Hello World
+```
+
+### B. Accessing Annotations
+
+Annotations are stored automatically inside the function object's `__annotations__` dictionary attribute.
+
+```
+def division(num: float, den: float) -> float:
+   return num / den
+
+print(division.__annotations__)
+# Output: {'num': <class 'float'>, 'den': <class 'float'>, 'return': <class 'float'>}
+```
+
+### C. Annotations with Default Values
+
+If a parameter has both an annotation and a default value, the default value comes **after** the annotation.
+
+```
+# 'b' expects a float, but defaults to 2.0 if nothing is passed
+def divide(a: float, b: float = 2.0) -> float:
+   return a / b
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
