@@ -1,6 +1,6 @@
 # 100 Must-Know Python Interview Questions and Answers (2026)
 
-> All answers reflect Python 3.12+ version
+> All answers reflect Python 3.12+ version. Get started with Python and refer this questions and answers to understand Python in depth.
 
 ## Table of Contents
 
@@ -18,18 +18,17 @@
 12. [Python and Data Science](#12-python-and-data-science) — Q91–Q95
 13. [Python and Machine Learning](#13-python-and-machine-learning) — Q96–Q100
 
-
 ## 1. Python Fundamentals
 
 ### Q1. What are the key features of Python?
 
 Python is a high-level, general-purpose programming language first released in 1991 by Guido van Rossum. Over three decades it has evolved into one of the most widely used languages in software engineering, data science, automation, and AI. Its popularity stems from a combination of design philosophy and practical features.
 
-**Interpreted Language**
+#### Interpreted Language
 
 Python is executed line-by-line by an interpreter rather than compiled ahead of time into machine code. This makes the development cycle fast — you write code and run it immediately without a compilation step. The CPython interpreter (the reference implementation) first compiles source code to bytecode (`.pyc` files), then executes that bytecode in the Python Virtual Machine (PVM).
 
-**Dynamic Typing**
+#### Dynamic Typing
 
 Python uses dynamic typing, meaning variable types are determined at runtime, not at compile time. You do not need to declare a variable's type explicitly.
 
@@ -39,7 +38,7 @@ x = "hello"  # x is now a str — perfectly valid in Python
 x = [1, 2]   # x is now a list
 ```
 
-**Strongly Typed**
+#### Strongly Typed
 
 Although dynamically typed, Python is strongly typed. It does not silently coerce incompatible types. Attempting to add a string to an integer raises a `TypeError`, unlike languages such as JavaScript which perform implicit coercion.
 
@@ -48,30 +47,30 @@ result = "score: " + 10  # TypeError: can only concatenate str (not "int") to st
 result = "score: " + str(10)  # Correct: "score: 10"
 ```
 
-**High-Level Abstractions**
+#### High-Level Abstractions
 
 Python provides built-in data structures (lists, dictionaries, sets, tuples) and high-level abstractions that remove the need for manual memory management, pointer arithmetic, or low-level system calls.
 
-**Extensive Standard Library**
+#### Extensive Standard Library
 
 Python ships with a rich standard library covering file I/O, networking, threading, JSON, CSV, regular expressions, database access, cryptography, and much more. This is often referred to as Python's "batteries included" philosophy.
 
-**Multi-Paradigm**
+#### Multi-Paradigm
 
 Python supports:
 - **Procedural programming** — sequential code organized into functions
 - **Object-oriented programming** — classes, inheritance, polymorphism
 - **Functional programming** — first-class functions, `map`, `filter`, `reduce`, lambda expressions, comprehensions
 
-**Cross-Platform**
+#### Cross-Platform
 
 Python runs on Windows, macOS, Linux, and many other platforms without modification to the source code.
 
-**Large Ecosystem**
+#### Large Ecosystem
 
 The Python Package Index (PyPI) hosts over 500,000 packages covering web frameworks (Django, Flask, FastAPI), scientific computing (NumPy, SciPy), machine learning (scikit-learn, PyTorch, TensorFlow), data analysis (pandas), and automation.
 
-**Readable Syntax**
+#### Readable Syntax
 
 Python enforces indentation as part of its syntax, which compels consistent, readable code formatting. The guiding philosophy is captured in PEP 20 (The Zen of Python): "Readability counts."
 
