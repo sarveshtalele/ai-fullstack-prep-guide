@@ -38,9 +38,7 @@ There is no course or curriculum here — just honest notes from someone learnin
 
 ```
 ai-fullstack-prep-guide/
-├── learning-guides/      # Deep-dive notes on a topic
 ├── interview-guides/     # Interview-focused walkthroughs
-├── cheatsheets/          # Quick-reference sheets
 └── scripts/
     └── update_readme.py  # Auto-generates the tables above
 ```
